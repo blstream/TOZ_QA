@@ -3,6 +3,12 @@ package com.patronage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DriverFactory {
 
@@ -19,7 +25,16 @@ public class DriverFactory {
     }
 
     private void createNewDriverInstance() {
-                driver = new ChromeDriver();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("start-maximized");
+
+                Map<String, Object> prefs = new HashMap<String, Object>();
+                prefs.put("credentials_enable_service", false);
+                options.setExperimentalOption("prefs", prefs);
+
+                DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+                capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+                driver = new ChromeDriver(capabilities);
     }
 /*
 good but i can handle it without it
