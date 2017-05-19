@@ -8,10 +8,15 @@ import org.openqa.selenium.support.How;
  * Created by marekpawlowski on 02/05/2017.
  */
 
-public class MainPage {
+public class LoginPage {
 
 
-    /* Login */
+
+
+    @FindBy(how = How.PARTIAL_LINK_TEXT , using = "Zaloguj")
+    private WebElement loginTile;
+
+     /* Login */
 
     @FindBy(how = How.CSS , using =("input[type='email']") )
     private WebElement email;
@@ -22,6 +27,11 @@ public class MainPage {
     @FindBy(how = How.CSS , using =("button[type='submit']") )
     private WebElement submit;
 
+    /* Errors */
+
+    @FindBy (how = How.XPATH, using =("//p[contains(text(),'Niepoprawny login i/lub hasło')]"))
+    private WebElement loginError;
+
 
 
 
@@ -29,6 +39,8 @@ public class MainPage {
     public WebElement getEmail() {return email;}
     public WebElement getPassword() {return password;}
     public WebElement getSubmit() { return submit;}
+    public WebElement getLoginTile() {return loginTile;}
+    public WebElement getLoginError() {return  loginError;}
 
 
 
