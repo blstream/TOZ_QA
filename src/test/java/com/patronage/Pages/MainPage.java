@@ -12,39 +12,32 @@ import java.util.List;
 
 public class MainPage {
 
-
-    /* Login */
-
-    @FindBy(how = How.CSS , using =("input[type='email']") )
-    private WebElement email;
-
-    @FindBy(how = How.CSS , using =("input[type='password']") )
-    private WebElement password;
-
-    @FindBy(how = How.CSS , using =("button[type='submit']") )
-    private WebElement submit;
-
-    @FindBy(how = How.PARTIAL_LINK_TEXT , using = "Zaloguj")
+    @FindBy(how = How.ID , using ="login-btn")
     private WebElement loginTile;
 
     /* News */
 
-    @FindBy(how = How.CLASS_NAME , using = "div .column.news-container img")
-    private List<WebElement> imagesOfNews;
+    @FindBy (how = How.CLASS_NAME , using = "news-date")
+    private List<WebElement> datesOfNews;
 
-    @FindBy(how = How.CSS , using = "div .column.news-container a")
+    @FindBy (how = How.CSS , using = "h2.news-title")
     private List<WebElement> titlesOfNews;
 
-    @FindBy(how = How.CSS , using = "div .column.news-container h4")
-    private List<WebElement> shortsDescriptionsOfNews;
+    @FindBy (how = How.CLASS_NAME , using = "news-image")
+    private List<WebElement> imagesOfNews;
 
-    public WebElement getEmail() {return email;}
-    public WebElement getPassword() {return password;}
-    public WebElement getSubmit() { return submit;}
-    public WebElement getLoginTile() {return loginTile;}
+    @FindBy (how = How.CLASS_NAME , using = "news-body")
+    private List<WebElement> bodiesOfNews;
 
-    public List<WebElement> getImagesOfNews() {return imagesOfNews;}
-    public List<WebElement> getTitlesOfNews() {return  titlesOfNews;}
-    public List<WebElement> getShortsDescriptionsOfNews() {return shortsDescriptionsOfNews;}
+    @FindBy (how = How.CLASS_NAME , using = "news-button")
+    private List<WebElement> detailsOfNewsButtons;
 
+    public List<WebElement> getDatesOfNews() { return datesOfNews;}
+    public List<WebElement> getTitlesOfNews() { return titlesOfNews;}
+    public List<WebElement> getImagesOfNews() { return imagesOfNews;}
+    public List<WebElement> getBodiesOfNews() { return bodiesOfNews;}
+    public List<WebElement> getDetailsOfNewsButtons() { return detailsOfNewsButtons;}
+
+
+    public WebElement getLoginTile() { return loginTile;}
 }
